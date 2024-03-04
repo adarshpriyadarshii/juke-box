@@ -10,23 +10,28 @@ Create an audio pill player where files can be added individually on an audio tr
 4. Wavesurfer.JS
 
 ### Steps:
-• Made an layout of overall dashboard
-• Made the “Songs Uploading Form” component with the feature of multiple songs uploading and further adding to our Playlist..
+• Made an layout of overall dashboard.
+
+• Made the “Songs Uploading Form” component with the feature of multiple songs uploading and further adding to our Playlist.
+
 • Made the “Playlist” component for the List of uploaded songs with the features of:
 1. Changing the order of songs by drag and drop.
 2. Deleting the song from the list.
+   
 • Made “Individual Player” component with the features of:
 1. Changing songs forward/backward from the Playlist.
 2. Moving 10sec ahead/back in the current playing song.
+   
 • Made “Combined Player” component with the following features:
 1. Concatenating songs into one track using the “Crunker” package.
 2. Transforming the concatenated audio source in the form of wave using the “Wavesurfer.js” package.
 
 ### Challenges:
-• Some features I made on which I had no prior experience, they are:
-• Working on the “Drag and Drop”  feature of Playlist, I watched some tutorials on youtube for help.
-• Concatenating the songs to make a single track, I could not find any youtube tutorial, thus searched on google and tried multiple packages like Crunker, AudioConcat, WebAPIContext etc. Finally the Crunker documentations helped in resolving this issue.
-• Last challenge was importing the waveForm, and their documentation helped.
+Some features I made on which I had no prior experience, they are:
+
+1. Working on the “Drag and Drop”  feature of Playlist, I watched some tutorials on youtube for help.
+2. Concatenating the songs to make a single track, I could not find any youtube tutorial, thus searched on google and tried multiple packages like Crunker, AudioConcat, WebAPIContext etc. Finally the Crunker documentations helped in resolving this issue.
+3. Last challenge was importing the waveForm, and their documentation helped.
 
 # Getting Started with Create React App
 
