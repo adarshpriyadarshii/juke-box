@@ -1,12 +1,14 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import Player from "../components/Player/player";
 import UploadForm from "../components/uploadForm";
 import SongList from "../components/songList";
 import { useSongs } from "../contexts/songsContext";
 import WavePlayer from "../components/Player/WavePlayer/wavePlayer";
+import WaveformPlayerList from "../components/multiPlayer";
 
 function Home() {
+  const multitrackRef = useRef(null);
   const [player, setPlayer] = useState(0);
   const {songs}=useSongs();
   return (
@@ -53,8 +55,6 @@ function Home() {
       </Stack>
     {/* Conditionally rendering type of player and also checking if songs are loaded in our Playlist. */}
       <Box
-        position="fixed"
-        bottom="0"
         width="100%"
         display="flex"
         justifyContent="center"
@@ -69,7 +69,7 @@ function Home() {
                     Play Individually
                   </Button>
                   <Button onClick={() => setPlayer(2)}>
-                    Play in one Timeline
+                    Play in Multiplayer
                   </Button>
                 </Stack>
               </>
@@ -84,14 +84,18 @@ function Home() {
               <>
                 <Stack direction="column">
                   <Button onClick={() => setPlayer(0)}>Change Player</Button>
-                  <WavePlayer/>
+                  {/* <WavePlayer/> */}
+                  <WaveformPlayerList multitrackRef={multitrackRef}/>
                 </Stack>
               </>
             )}
           </>
         ) : (
-          <></>
+          <>
+            <Typography variant="h4" sx={{ fontFamily: "cursive" }}>Please add songs 🥂</Typography>
+          </>
         )}
+        
       </Box>
     </Box>
   );

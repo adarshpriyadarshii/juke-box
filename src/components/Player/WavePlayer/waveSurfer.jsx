@@ -1,8 +1,11 @@
-import React, { useRef, useCallback } from "react";
+import React, { useMemo,useRef, useCallback, useState,useEffect,forwardRef } from "react";
 import { useWavesurfer } from "@wavesurfer/react";
 import { Box, Button, Stack, Typography } from "@mui/material";
+import { useSongs } from "../../../contexts/songsContext";
+import Timeline from 'wavesurfer.js/dist/plugins/timeline.esm.js'
 
-function WaveformPlayer({ audioSrc }) {
+
+function WaveformPlayer({ audioSrc}) {
   const waveformRef = useRef(null);
 
   //Function for Formatting the current playing time of our Track.
@@ -14,10 +17,15 @@ function WaveformPlayer({ audioSrc }) {
   //Function for creating our WaveForm.
   const { wavesurfer, isPlaying, currentTime } = useWavesurfer({
     container: waveformRef,
-    height: 50,
+    height: 25,
+    width:"80vw",
+    cursorColor: '#FFF',
     waveColor: "#687EFF",
-    progressColor: "#f3e9f5",
+    progressColor: "red",
+    cursorWidth: 2,
     url: audioSrc,
+    autoScroll:true,
+    plugins: useMemo(() => [Timeline.create()], []),
   });
 
   //Function for triggering Play/Pause functionality on our Waveform.
@@ -36,7 +44,7 @@ function WaveformPlayer({ audioSrc }) {
         margin="2%"
       >
         <Typography>Current time: {formatTime(currentTime)}</Typography>
-        <Button
+        {/* <Button
           onClick={onPlayPause}
           sx={{
             border: "5px solid #80B3FF",
@@ -48,7 +56,7 @@ function WaveformPlayer({ audioSrc }) {
           }}
         >
           {isPlaying ? "Pause" : "Play"}
-        </Button>
+        </Button> */}
       </Stack>
     </>
   );
